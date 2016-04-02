@@ -14,6 +14,12 @@ NeoBundle 'duck8823/perl-support.vim'
 ```
   
 ## Configuration
+In `.vimrc`
+```vim
+let g:perl_support#module_dirs = ['/path/to/module/dir', '/path/to/module/dir']
+```
+  
+### For Example
 ```vim
 let g:perl_support#module_dirs = [$HOME.'/.perl5lib']
 ```
