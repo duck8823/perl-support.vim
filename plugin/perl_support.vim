@@ -23,8 +23,7 @@ function! perl_support#find_local_modules()
 	if filereadable( cache )
 		let modules = readfile(cache)
 	endif
-	let dirs = split($PERL5LIB, ':')
-	for dir in dirs
+	for dir in g:perl_support#module_dirs
 		let file_map = substitute(expand(dir . '/**'), '\\', '/', 'g')
 		let files = split(file_map, "\n")
 		for file in files
