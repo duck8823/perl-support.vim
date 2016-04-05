@@ -62,5 +62,28 @@ function! s:get_package_name()
 	return ""
 endfunction
 
+function! perl_support#comment_toggle()
+	let s:index = line("v")
+	let s:end = line(".")
+	let s:do_comment = 'false'
+	while s:index <= s:end
+		if getline(s:index)[col(1)] != '#'
+			let s:do_comment = 'true'
+		endif
+		let s:index = s:index + 1
+	endwhile
+	let s:index = line("v")
+	set paste
+	while s:index <= s:end
+		call cursor(s:index, 0)
+		if s:do_comment == 'true'
+			execute ":normal i" . "#"
+		else
+			execute ":".s:index."s/^#//"
+		endif
+		let s:index = s:index + 1
+	endwhile
+	set nopaste
+endfunction
 let &cpo = s:save_cpo
 unlet s:save_cpo

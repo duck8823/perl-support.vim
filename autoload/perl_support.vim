@@ -17,7 +17,8 @@ set cpo&vim
 let g:perl_support#module_dirs = get(g:, 'perl_support#module_dirs',  [])
 
 command! -nargs=0 FindLocalModules call perl_support#find_local_modules()
-autocmd! VimEnter * call perl_support#find_local_modules()
+command! -nargs=0 CommentToggle call perl_support#comment_toggle()
+autocmd! VimEnter *.p* call perl_support#find_local_modules()
 autocmd! BufWritePost *.pm call perl_support#check_package_name()
 
 let &cpo = s:save_cpo
